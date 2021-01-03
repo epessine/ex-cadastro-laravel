@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\API\UsuarioApiController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Models\Usuario;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,13 +24,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::prefix('v1')->group(function()
 {
-    Route::get('lista', function ()
+    Route::get('/lista', function ()
     {
-        return ["a", "b", "c"];
+        return Usuario::listar(10);
     });
 
-    Route::post('cadastrar', function ()
-    {
-        echo "implementar";
-    });
+    Route::post('/cadastrar', 'API\UsuarioApiController@salvar');
 });

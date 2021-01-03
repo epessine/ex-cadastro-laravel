@@ -27,7 +27,7 @@ class Usuario extends Model
         ])
         ->limit($limite);
 
-        dd($sql->toSql());
+        return $sql->get();
     }
 
     public static function cadastrar(Request $request)
